@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>eVannamei</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg  width=%2264%22 height=%2264%22 viewBox=%220 0 64 64%22 xmlns=%22http://www.w3.org/2000/svg%22 role=%22img%22 aria-label=%22Logo eVannamei%22%3E%3Cdefs%3E%3ClinearGradient id=%22lg%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%230e7c66%22/%3E%3Cstop offset=%221%22 stop-color=%22%232cc3a2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22url(%23lg)%22/%3E%3Cg fill=%22none%22 stroke=%22%23fff%22 stroke-width=%225%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpath d=%22M44 22A15.6 15.6 0 1 0 44 42%22/%3E%3Cpath d=%22M17 32H46%22/%3E%3C/g%3E%3Cpath d=%22M44 22A15.6 15.6 0 1 0 44 42%22 fill=%22none%22 stroke=%22%230e7c66%22 stroke-opacity=%22.45%22 stroke-width=%225%22 stroke-dasharray=%221.4 6.2%22/%3E%3Cg fill=%22none%22 stroke=%22%23fff%22 stroke-width=%222.2%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M45 21Q52 13 59 15%22/%3E%3Cpath d=%22M46 23Q55 21 60 26%22/%3E%3Cpath d=%22M43 43L51 38M43 43L52 44M43 43L50 50%22/%3E%3C/g%3E%3Ccircle cx=%2246.5%22 cy=%2222.5%22 r=%222.4%22 fill=%22%23fff%22/%3E%3Ccircle cx=%2247.2%22 cy=%2222%22 r=%221%22 fill=%22%230e7c66%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,800&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f5f7f6;--card:#fff;--tx:#14211d;--mu:#647a73;--ac:#0e7c66;--bd:#dce5e1;--up:#0e7c66;--dn:#c2410c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1715;--card:#18221f;--tx:#e8f0ed;--mu:#8fa69e;--ac:#2cc3a2;--bd:#2a3733;--up:#2cc3a2;--dn:#fb923c}}
+:root[data-theme="dark"]{--bg:#0f1715;--card:#18221f;--tx:#e8f0ed;--mu:#8fa69e;--ac:#2cc3a2;--bd:#2a3733;--up:#2cc3a2;--dn:#fb923c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,sans-serif;max-width:560px;margin:0 auto;padding:12px 12px 80px}
+h1{font-size:19px;margin:6px 0 2px}
+.sub{color:var(--mu);font-size:13px;margin-bottom:10px}
+.tabs{display:flex;gap:6px;margin:10px 0}
+.tabs button{flex:1;padding:9px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font:inherit;font-weight:600}
+.tabs button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin-bottom:10px}
+.row{display:flex;gap:8px}.row>*{flex:1;min-width:0}
+label{font-size:12px;color:var(--mu);display:block;margin:6px 0 2px}
+input,select{width:100%;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.btn{width:100%;margin-top:10px;padding:11px;border:0;border-radius:10px;background:var(--ac);color:#fff;font:inherit;font-weight:700}
+.big{font-size:24px;font-weight:700}
+.chg{font-size:13px;font-weight:600}.up{color:var(--up)}.dn{color:var(--dn)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.item{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-top:1px solid var(--bd)}
+.item:first-child{border-top:0}
+.mu{color:var(--mu);font-size:12.5px}
+.x{background:none;border:0;color:var(--mu);font-size:18px}
+.chart{overflow-x:auto}
+.hide{display:none}
+.brand{display:flex;align-items:center;gap:10px;margin:4px 0 2px;font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-style:italic;font-weight:800;font-size:30px;letter-spacing:-.5px;line-height:1}
+.brand b{color:var(--ac);font-size:1.15em}
+.brand svg{flex:none;filter:drop-shadow(0 2px 4px rgba(14,124,102,.35))}
+</style>
+</head>
+<body>
+<noscript><div class="card">JavaScript nonaktif. Buka halaman ini lewat browser (Chrome/Safari), bukan pratinjau file.</div></noscript>
+<div id="err" class="card hide" style="color:var(--dn);font-size:13px"></div>
+<h1 class="brand"><svg  width="46" height="46" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo eVannamei"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e7c66"/><stop offset="1" stop-color="#2cc3a2"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#lg)"/><g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M44 22A15.6 15.6 0 1 0 44 42"/><path d="M17 32H46"/></g><path d="M44 22A15.6 15.6 0 1 0 44 42" fill="none" stroke="#0e7c66" stroke-opacity=".45" stroke-width="5" stroke-dasharray="1.4 6.2"/><g fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M45 21Q52 13 59 15"/><path d="M46 23Q55 21 60 26"/><path d="M43 43L51 38M43 43L52 44M43 43L50 50"/></g><circle cx="46.5" cy="22.5" r="2.4" fill="#fff"/><circle cx="47.2" cy="22" r="1" fill="#0e7c66"/></svg><span><b>e</b>Vannamei</span></h1>
+<div class="sub">Pantau harga & catat transaksi udang vannamei</div>
+<div class="sub" id="sync" style="cursor:pointer"></div>
+<div class="tabs"><button data-t="h" class="on">Harga</button><button data-t="t">Transaksi</button><button data-t="r">Ringkasan</button><button data-t="m">Pasar</button></div>
+
+<section id="h">
+  <div class="card">
+    <label>Ukuran (size, ekor/kg)</label>
+    <select id="fs"></select>
+    <div id="cur" style="margin-top:10px"></div>
+    <div class="chart" id="chart"></div>
+  </div>
+  <div class="card">
+    <b>Catat harga hari ini</b>
+    <div class="row"><div><label>Tanggal</label><input type="date" id="pd"></div><div><label>Harga (Rp/kg)</label><input type="number" id="pp" inputmode="numeric" placeholder="65000"></div></div>
+    <div class="row"><div><label>Ukuran</label><select id="ps"></select></div><div><label>Lokasi/pasar</label><input id="pl" placeholder="mis. Tambak Sidoarjo"></div></div>
+    <button class="btn" id="addp">Simpan harga</button>
+  </div>
+  <div class="card"><b>Riwayat harga</b><div id="plist"></div></div>
+</section>
+
+<section id="t" class="hide">
+  <div class="card">
+    <b>Transaksi baru</b>
+    <div class="row"><div><label>Jenis</label><select id="tj"><option value="jual">Jual</option><option value="beli">Beli</option></select></div><div><label>Tanggal</label><input type="date" id="td"></div></div>
+    <div class="row"><div><label>No. kolam</label><input id="tkl" placeholder="mis. 3 atau A2"></div></div>
+    <div class="row" id="tka" style="display:none"><div><label>Keterangan udang</label><input id="tket" placeholder="mis. undersize"></div></div>
+    <div class="row"><div id="tsw"><label>Size (ekor/kg)<span id="tso" class="mu"></span></label><input type="text" id="ts" inputmode="decimal" placeholder="mis. 52,5" oninput="this.value=this.value.replace(/[^0-9.,]/g,'')"></div><div><label>Berat (kg)</label><input type="text" id="tk" inputmode="decimal" placeholder="500 atau 500,5"></div></div>
+    <div class="row"><div><label>Harga (Rp/kg)</label><input type="number" id="th" inputmode="numeric"></div><div><label>Pihak (pembeli/pemasok)</label><input id="tp"></div></div>
+    <div class="row"><div><label>Kualitas</label><select id="tq"><option value="fresh">Fresh</option><option value="nonfresh">Non fresh</option></select></div><div><label>Status bayar</label><select id="tb"><option value="lunas">Lunas</option><option value="belum">Belum lunas</option></select></div></div>
+    <div class="mu" id="tn" style="margin-top:8px"></div>
+    <div class="mu" id="ttot" style="margin-top:4px"></div>
+    <button class="btn" id="addt">Simpan transaksi</button>
+    <button class="btn" id="canc" style="display:none;background:var(--mu)">Batal edit</button>
+  </div>
+  <div class="card"><b>Daftar transaksi</b><div id="tlist"></div></div>
+</section>
+
+<section id="r" class="hide">
+  <div class="grid" id="sum"></div>
+  <div class="card"><b>Rata-rata harga per ukuran</b><div id="avg"></div></div>
+  <div class="card"><b>Cadangan &amp; pindah data</b>
+    <div class="mu">Ekspor untuk menyalin semua data, lalu Impor di halaman atau perangkat lain.</div>
+    <textarea id="bk" rows="4" style="width:100%;margin-top:8px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);padding:8px;font:12px monospace" placeholder="Data ekspor muncul di sini; atau tempel data di sini untuk impor"></textarea>
+    <div class="row"><button class="btn" id="bex">Ekspor</button><button class="btn" id="bim">Impor</button></div>
+    <div class="mu" id="bmsg" style="margin-top:6px"></div>
+  </div>
+</section>
+
+<section id="m" class="hide">
+  <div class="card">
+    <b>Harga pasaran daerah</b>
+    <div id="mi" style="margin-top:6px"></div>
+    <div class="mu" id="mmsg" style="margin-top:6px"></div>
+    <div class="mu" style="margin-top:8px">Data ini snapshot, tidak update otomatis. <a href="https://app.jala.tech/harga_udang" target="_blank" rel="noopener" style="color:var(--ac)">Cek harga terkini di JALA ↗</a></div>
+  </div>
+  <div class="card">
+    <b>Sumatera &amp; Jawa</b>
+    <div id="mj" style="margin-top:6px"></div>
+  </div>
+  <div class="card">
+    <b>Tambah harga daerah lain</b>
+    <div class="row"><div><label>Daerah</label><input id="mr" placeholder="mis. Banyuwangi, Jatim"></div><div><label>Tanggal</label><input type="date" id="md"></div></div>
+    <div class="row"><div><label>Size</label><input id="ms" inputmode="decimal" placeholder="mis. 50"></div><div><label>Harga (Rp/kg)</label><input type="number" id="mp" inputmode="numeric"></div></div>
+    <button class="btn" id="mad">Simpan</button>
+  </div>
+  <div class="card"><b>Catatan pasar saya</b><div id="ml"></div></div>
+</section>
+
+<script>
+window.onerror=function(m,u,l){var e=document.getElementById('err');if(e){e.classList.remove('hide');e.textContent='Terjadi error: '+m+' (baris '+l+')'}};
+const SIZES=[30,40,50,60,70,80,100];
+const rp=n=>'Rp '+Math.round(n).toLocaleString('id-ID');
+const num=v=>parseFloat(String(v).replace(',','.'));
+const today=()=>new Date().toISOString().slice(0,10);
+let S={prices:[],trx:[]};
+try{const d=localStorage.getItem('vaname');if(d)S=JSON.parse(d)}catch(e){}
+const save=()=>{try{localStorage.setItem('vaname',JSON.stringify(S))}catch(e){}if(API_URL)syncDiff()};
+const $=id=>document.getElementById(id);
+['fs','ps'].forEach(id=>$(id).innerHTML=SIZES.map(s=>`<option value="${s}">Size ${s}</option>`).join(''));
+$('fs').value=$('ps').value=50;
+$('pd').value=$('td').value=today();
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+  ['h','t','r','m'].forEach(k=>$(k).classList.toggle('hide',k!==b.dataset.t));render();
+});
+$('fs').onchange=render;
+$('addp').onclick=()=>{const p=+$('pp').value;if(!p)return;
+  S.prices.push({id:Date.now(),d:$('pd').value,s:+$('ps').value,p,l:$('pl').value.trim()});
+  $('pp').value='';$('fs').value=$('ps').value;save();render()};
+let manual=false;
+const fz=n=>String(n).replace('.',',');
+function priceFor(s){
+ const m={};
+ [...S.prices].sort((a,b)=>a.d.localeCompare(b.d)||a.id-b.id).forEach(p=>m[p.s]=p.p);
+ const ks=Object.keys(m).map(Number).sort((a,b)=>a-b);
+ if(!ks.length)return null;
+ if(m[s]!==undefined)return{p:m[s],n:'harga terakhir size '+fz(s)};
+ const lo=ks.filter(k=>k<s).pop(),hi=ks.find(k=>k>s);
+ if(lo!==undefined&&hi!==undefined)return{p:m[lo]+(m[hi]-m[lo])*(s-lo)/(hi-lo),n:'interpolasi size '+fz(lo)+' & '+fz(hi)};
+ const k=lo!==undefined?lo:hi;return{p:m[k],n:'mendekati size '+fz(k)};
+}
+function auto(){
+ if(manual)return;
+ if($('tq').value==='nonfresh'){$('tn').textContent='Non fresh: harga diisi manual.';upd();return}
+ const s=Math.round(num($('ts').value)*100)/100;
+ if(!s){$('th').value='';$('tn').textContent='';upd();return}
+ const r=priceFor(s);
+ if(!r){$('th').value='';$('tn').textContent='Belum ada data harga. Catat di tab Harga atau isi manual.';upd();return}
+ $('th').value=Math.round(r.p);
+ $('tn').textContent='Harga otomatis ('+r.n+'). Bisa diubah manual.';upd();
+}
+function upd(){const k=num($('tk').value)||0,h=+$('th').value||0;$('ttot').textContent=k&&h?'Total: '+rp(k*h):''}
+$('tk').oninput=upd;
+$('th').oninput=()=>{manual=true;upd()};
+$('ts').addEventListener('input',()=>{manual=false;auto()});
+$('tq').onchange=()=>{manual=false;const nf=$('tq').value==='nonfresh';$('tka').style.display=nf?'':'none';$('tso').textContent=nf?' (opsional)':'';if(nf){$('th').value=''}else $('tket').value='';auto()};
+$('addt').onclick=()=>{const nf=$('tq').value==='nonfresh',k=num($('tk').value),h=+$('th').value,sz=Math.round(num($('ts').value)*100)/100;if(!k||!h||(!nf&&!sz))return;
+  const obj={j:$('tj').value,d:$('td').value,s:sz||null,k,h,q:$('tq').value,kl:$('tkl').value.trim(),ket:nf?$('tket').value.trim():'',p:$('tp').value.trim(),b:$('tb').value};if(editId){const t=S.trx.find(x=>x.id==editId);if(t)Object.assign(t,obj);else S.trx.push(Object.assign({id:Date.now()},obj));endEdit()}else S.trx.push(Object.assign({id:Date.now()},obj));
+  $('tk').value=$('th').value=$('tp').value='';manual=false;auto();save();render()};
+let editId=null;
+function endEdit(){editId=null;$('addt').textContent='Simpan transaksi';$('canc').style.display='none';['tkl','ts','tket'].forEach(i=>$(i).value='');$('tn').textContent=''}
+$('canc').onclick=()=>{endEdit();$('tk').value=$('th').value=$('tp').value='';manual=false;auto()};
+window.editT=id=>{const t=S.trx.find(x=>x.id==id);if(!t)return;
+ const nf=t.q==='nonfresh';
+ $('tj').value=t.j;$('td').value=t.d;$('tkl').value=t.kl||'';$('tq').value=t.q||'fresh';
+ $('tka').style.display=nf?'':'none';$('tso').textContent=nf?' (opsional)':'';
+ $('tket').value=t.ket||'';$('ts').value=t.s?fz(t.s):'';$('tk').value=fz(t.k);$('th').value=t.h;$('tp').value=t.p||'';$('tb').value=t.b;
+ manual=true;editId=id;$('addt').textContent='Update transaksi';$('canc').style.display='';
+ $('tn').textContent='Mode edit: ubah data lalu tekan Update.';upd();window.scrollTo({top:0,behavior:'smooth'})};
+window.delP=id=>{S.prices=S.prices.filter(x=>x.id!=id);save();render()};
+window.delT=id=>{S.trx=S.trx.filter(x=>x.id!=id);save();render()};
+window.tog=id=>{const t=S.trx.find(x=>x.id==id);t.b=t.b==='lunas'?'belum':'lunas';save();render()};
+const fmtD=d=>new Date(d+'T00:00').toLocaleDateString('id-ID',{day:'numeric',month:'short'});
+
+function chart(pts){
+  if(pts.length<2)return '<div class="mu" style="padding:14px 0">Tambah minimal 2 catatan harga untuk melihat grafik.</div>';
+  const W=Math.max(320,pts.length*48),H=170,P=28;
+  const ys=pts.map(p=>p.p),mn=Math.min(...ys),mx=Math.max(...ys),r=(mx-mn)||1;
+  const X=i=>P+i*(W-2*P)/(pts.length-1),Y=v=>H-P-(v-mn)/r*(H-2*P);
+  const path=pts.map((p,i)=>(i?'L':'M')+X(i)+','+Y(p.p)).join(' ');
+  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="max-width:none">
+  <path d="${path}" fill="none" stroke="var(--ac)" stroke-width="2.5"/>
+  ${pts.map((p,i)=>`<circle cx="${X(i)}" cy="${Y(p.p)}" r="3.5" fill="var(--ac)"/><text x="${X(i)}" y="${H-8}" font-size="10" text-anchor="middle" fill="var(--mu)">${fmtD(p.d)}</text>`).join('')}
+  <text x="4" y="${Y(mx)-6}" font-size="10" fill="var(--mu)">${(mx/1000).toFixed(1)}k</text>
+  <text x="4" y="${Y(mn)+14}" font-size="10" fill="var(--mu)">${(mn/1000).toFixed(1)}k</text></svg>`;
+}
+
+function render(){
+  renderM();renderJ();
+  const sz=+$('fs').value;
+  const pts=S.prices.filter(p=>p.s===sz).sort((a,b)=>a.d.localeCompare(b.d)||a.id-b.id);
+  if(pts.length){
+    const l=pts[pts.length-1],pr=pts[pts.length-2];
+    let c='';
+    if(pr){const df=l.p-pr.p,pc=df/pr.p*100;c=`<span class="chg ${df>=0?'up':'dn'}">${df>=0?'▲':'▼'} ${rp(Math.abs(df))} (${pc.toFixed(1)}%)</span> <span class="mu">vs ${fmtD(pr.d)}</span>`}
+    $('cur').innerHTML=`<div class="mu">Harga terakhir · ${fmtD(l.d)}${l.l?' · '+l.l:''}</div><div class="big">${rp(l.p)}<span class="mu">/kg</span></div>${c}`;
+  }else $('cur').innerHTML='<div class="mu">Belum ada data harga untuk size ini.</div>';
+  $('chart').innerHTML=chart(pts);
+  const pl=[...S.prices].sort((a,b)=>b.d.localeCompare(a.d)||b.id-a.id).slice(0,30);
+  $('plist').innerHTML=pl.length?pl.map(p=>`<div class="item"><div><b>${rp(p.p)}</b>/kg · Size ${p.s}<div class="mu">${fmtD(p.d)}${p.l?' · '+p.l:''}</div></div><button class="x" onclick="delP(${p.id})">✕</button></div>`).join(''):'<div class="mu">Belum ada.</div>';
+  const tl=[...S.trx].sort((a,b)=>b.d.localeCompare(a.d)||b.id-a.id);
+  const rowT=t=>`<div class="item"><div><b class="${t.j==='jual'?'up':'dn'}">${t.j==='jual'?'Jual':'Beli'}</b> · ${t.q==='nonfresh'?'Non fresh'+(t.ket?' ('+esc(t.ket)+')':'')+(t.s?' · Size '+fz(t.s):''):'Size '+fz(t.s)+' (Fresh)'+(t.s>0?' · MBW '+fz(Math.round(100000/t.s)/100)+' g':'')} · ${String(t.k).replace('.',',')} kg × ${rp(t.h)}<div class="mu">${fmtD(t.d)}${t.p?' · '+t.p:''} · <a href="#" onclick="tog(${t.id});return false" style="color:${t.b==='lunas'?'var(--up)':'var(--dn)'}">${t.b==='lunas'?'Lunas':'Belum lunas'}</a></div></div><div style="text-align:right"><b>${rp(t.k*t.h)}</b><br><a href="#" onclick="editT(${t.id});return false" style="color:var(--ac);font-size:12px">Edit</a> <button class="x" onclick="delT(${t.id})">✕</button></div></div>`;
+  renderTL(tl,rowT);
+  const sum=j=>S.trx.filter(t=>t.j===j).reduce((a,t)=>a+t.k*t.h,0);
+  const kg=j=>S.trx.filter(t=>t.j===j).reduce((a,t)=>a+t.k,0);
+  const piu=S.trx.filter(t=>t.b==='belum'&&t.j==='jual').reduce((a,t)=>a+t.k*t.h,0);
+  const hut=S.trx.filter(t=>t.b==='belum'&&t.j==='beli').reduce((a,t)=>a+t.k*t.h,0);
+  const box=(a,b,c)=>`<div class="card" style="margin:0"><div class="mu">${a}</div><div style="font-weight:700;font-size:16px">${b}</div><div class="mu">${c||''}</div></div>`;
+  $('sum').innerHTML=box('Total penjualan',rp(sum('jual')),kg('jual')+' kg')+box('Total pembelian',rp(sum('beli')),kg('beli')+' kg')+box('Selisih (kotor)',rp(sum('jual')-sum('beli')),'jual − beli')+box('Piutang / Utang',rp(piu),'utang: '+rp(hut));
+  $('avg').innerHTML=SIZES.map(s=>{const a=S.prices.filter(p=>p.s===s);if(!a.length)return '';const m=a.reduce((x,p)=>x+p.p,0)/a.length;return `<div class="item"><span>Size ${s}</span><span><b>${rp(m)}</b> <span class="mu">(${a.length} catatan)</span></span></div>`}).join('')||'<div class="mu">Belum ada data.</div>';
+}
+const PASARAN={tgl:'2026-10-12',sumber:'JALA',size:100,rows:[['Barru','Sulawesi Selatan',53000],['Bulukumba','Sulawesi Selatan',53000],['Donggala','Sulawesi Tengah',50000],['Parigi Moutong','Sulawesi Tengah',50000],['Mamuju Utara','Sulawesi Barat',50000],['Bombana','Sulawesi Tenggara',50000],['Bolaang Mongondow','Sulawesi Utara',44000]]};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cp(s,p,l,d){S.prices.push({id:Date.now(),d,s,p,l});save();render();$('mmsg').textContent='Ditambahkan ke catatan harga (lihat tab Harga).'}
+window.cpm=id=>{const m=S.market.find(x=>x.id==id);if(m)cp(m.s,m.p,m.r,m.d)};
+window.cpr=i=>{const r=PASARAN.rows[i];cp(PASARAN.size,r[2],r[0],PASARAN.tgl)};
+window.delM=id=>{S.market=S.market.filter(x=>x.id!=id);save();render()};
+function renderM(){
+  S.market=S.market||[];
+  const P=PASARAN,v=P.rows.map(r=>r[2]),avg=v.reduce((a,b)=>a+b,0)/v.length;
+  const idx=P.rows.map((r,i)=>i).sort((a,b)=>P.rows[b][2]-P.rows[a][2]);
+  $('mi').innerHTML=`<div class="mu">Harga tambak size ${P.size} · ${fmtD(P.tgl)} · sumber ${P.sumber}</div><div class="mu" style="margin:4px 0 8px">Rata-rata ${rp(avg)} · terendah ${rp(Math.min(...v))} · tertinggi ${rp(Math.max(...v))}</div>`+idx.map(i=>{const r=P.rows[i];return `<div class="item"><div><b>${r[0]}</b><div class="mu">${r[1]}</div></div><div style="text-align:right"><b>${rp(r[2])}</b><br><a href="#" onclick="cpr(${i});return false" style="color:var(--ac);font-size:12px">+ catatan saya</a></div></div>`}).join('');
+  const ml=[...S.market].sort((a,b)=>b.d.localeCompare(a.d)||b.id-a.id);
+  $('ml').innerHTML=ml.length?ml.map(m=>`<div class="item"><div><b>${esc(m.r)}</b> · Size ${fz(m.s)}<div class="mu">${fmtD(m.d)}</div></div><div style="text-align:right"><b>${rp(m.p)}</b><br><a href="#" onclick="cpm(${m.id});return false" style="color:var(--ac);font-size:12px">+ catatan saya</a> <button class="x" onclick="delM(${m.id})">✕</button></div></div>`).join(''):'<div class="mu">Belum ada.</div>';
+}
+const PJ=[
+ {r:'Lampung Timur',pv:'Sumatera (Lampung)',s:100,p:40000,t:'sekitar 23 Sep 2026',tgl:'2026-09-23',src:'ANTARA Lampung, harga di petambak'},
+ {r:'Jawa Timur (rata-rata)',pv:'Jawa Timur',s:null,p:84286,t:'minggu ini, Okt 2026',up:2.93,src:'Fishinfo DKP Jatim, tingkat konsumen'}
+];
+window.cpj=i=>{const x=PJ[i];cp(x.s,x.p,x.r,x.tgl)};
+window.togK=kl=>{const a=S.trx.filter(t=>(t.kl||'')===kl);const done=a.length&&a.every(t=>t.sp==='selesai');a.forEach(t=>t.sp=done?'berlangsung':'selesai');save();render()};
+function renderTL(tl,rowT){
+  if(!tl.length){$('tlist').innerHTML='<div class="mu">Belum ada.</div>';return}
+  const g={};
+  tl.forEach(t=>{const k=t.kl||'';(g[k]=g[k]||[]).push(t)});
+  const keys=Object.keys(g).sort((a,b)=>a===''?1:b===''?-1:a.localeCompare(b,'id',{numeric:true}));
+  const tot=a=>({kg:a.reduce((x,t)=>x+t.k,0),rp:a.reduce((x,t)=>x+t.k*t.h,0)});
+  const r2=n=>fz(Math.round(n*100)/100);
+  let h='';
+  keys.forEach(k=>{const a=g[k].slice().sort((x,y)=>(x.q==='nonfresh')-(y.q==='nonfresh')),T=tot(a),done=a.every(t=>t.sp==='selesai'),nm=k?'kolam '+esc(k):'tanpa kolam';
+    h+=`<div style="margin-top:10px;font-weight:700;display:flex;justify-content:space-between;gap:8px"><span>${k?'Kolam '+esc(k):'Tanpa kolam'}${k?(done?' · ✅ Panen selesai':' · ⏳ Panen berlangsung'):''}</span>${k?`<a href="#" data-k="${esc(k)}" onclick="togK(this.dataset.k);return false" style="color:var(--ac);font-size:12px;font-weight:600">${done?'Buka lagi':'Tandai selesai'}</a>`:''}</div>`+a.map(rowT).join('')+`<div class="item" style="background:var(--bg);border-radius:8px;padding:8px"><span class="mu">Total ${nm} · ${r2(T.kg)} kg</span><b>${rp(T.rp)}</b></div>`});
+  const G=tot(tl),nk=keys.filter(x=>x!=='').length;
+  h+=`<div class="item" style="margin-top:12px;border-top:2px solid var(--ac)"><b>GRAND TOTAL${nk?' ('+nk+' kolam)':''} · ${r2(G.kg)} kg</b><b>${rp(G.rp)}</b></div>`;
+  $('tlist').innerHTML=h;
+}
+function renderJ(){
+  $('mj').innerHTML=PJ.map((x,i)=>`<div class="item"><div><b>${x.r}</b><div class="mu">${x.pv} · ${x.t}</div><div class="mu">${x.s?'Size '+x.s:'Semua size'} · ${x.src}</div></div><div style="text-align:right"><b>${rp(x.p)}</b>${x.up?`<br><span class="chg up">▲ ${x.up}% / minggu</span>`:''}${x.s?`<br><a href="#" onclick="cpj(${i});return false" style="color:var(--ac);font-size:12px">+ catatan saya</a>`:''}</div></div>`).join('')+'<div class="mu" style="margin-top:8px">Daerah lain di Sumatera dan Jawa (Jabar, Jateng, Banten, dll.) belum ada sumber harga terkini yang bisa saya akses. Tambahkan manual di bawah.</div>';
+}
+$('md').value=today();
+$('mad').onclick=()=>{const p=+$('mp').value,s=Math.round(num($('ms').value)*100)/100,r=$('mr').value.trim();if(!p||!s||!r)return;S.market=S.market||[];S.market.push({id:Date.now(),d:$('md').value,r,s,p});$('mp').value=$('mr').value='';save();render()};
+const API_URL='https://script.google.com/macros/s/AKfycbwKeJ2wnO8Cmyj2Xh5FAHDWwdp9pBmtwiJiMOgYRs9KpkzbWDWkbAHAoduX4hVcIjKR/exec';   // tempel URL Web App Apps Script di sini
+const API_TOKEN='TAMBAK_SSF_SUAK'; // harus sama dengan TOKEN di Code.gs
+const COLS=['prices','trx','market'];
+let R={prices:{},trx:{},market:{}},pend=0,q=Promise.resolve(),firstSync=false;
+try{firstSync=localStorage.getItem('vaname_sync')==='1'}catch(e){}
+function setSync(t,c){const e=$('sync');e.textContent=t;e.style.color=c||'var(--mu)'}
+async function api(b){const r=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(Object.assign({token:API_TOKEN},b))});const j=await r.json();if(j.error)throw new Error(j.error);return j}
+async function pull(){
+  if(!API_URL||pend>0)return;
+  try{
+    const r=await fetch(API_URL+'?token='+encodeURIComponent(API_TOKEN));const j=await r.json();
+    if(j.error)throw new Error(j.error);
+    if(pend>0)return;
+    COLS.forEach(c=>{
+      const remote=j[c]||[];R[c]={};remote.forEach(x=>R[c][x.id]=JSON.stringify(x));
+      if(!firstSync){const ids=new Set(remote.map(x=>String(x.id)));S[c]=remote.concat((S[c]||[]).filter(x=>!ids.has(String(x.id))))}
+      else S[c]=remote;
+    });
+    if(!firstSync){firstSync=true;try{localStorage.setItem('vaname_sync','1')}catch(e){}}
+    try{localStorage.setItem('vaname',JSON.stringify(S))}catch(e){}
+    setSync('\u{1F7E2} Tersinkron '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'})+' (ketuk untuk muat ulang)','var(--up)');
+    render();syncDiff();
+  }catch(e){setSync('\u{1F534} Gagal sinkron: '+e.message+' (ketuk untuk coba lagi)','var(--dn)')}
+}
+function syncDiff(){
+  if(!API_URL)return q;
+  pend++;
+  q=q.then(async()=>{
+    try{
+      for(const c of COLS){
+        const cur={};(S[c]||[]).forEach(x=>cur[x.id]=x);
+        for(const id in cur){const s=JSON.stringify(cur[id]);if(R[c][id]!==s){await api({op:'set',col:c,item:cur[id]});R[c][id]=s}}
+        for(const id in R[c]){if(!(id in cur)){await api({op:'del',col:c,id});delete R[c][id]}}
+      }
+      setSync('\u{1F7E2} Tersinkron (ketuk untuk muat ulang)','var(--up)');
+    }catch(e){setSync('\u{1F534} Gagal sinkron: '+e.message+' (ketuk untuk coba lagi)','var(--dn)')}
+    pend--;
+  });
+  return q;
+}
+$('sync').onclick=()=>{if(API_URL)syncDiff().then(pull)};
+if(API_URL){setSync('\u23F3 Menyambungkan ke Google Sheets...');pull();setInterval(pull,30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)pull()})}
+else setSync('Mode lokal (belum tersambung ke Google Sheets)');
+$('bex').onclick=()=>{const t=JSON.stringify(S);$('bk').value=t;$('bk').select();try{navigator.clipboard.writeText(t).then(()=>$('bmsg').textContent='Tersalin. Jika gagal, tekan lama teks di atas lalu salin.',()=>$('bmsg').textContent='Tekan lama teks di atas, lalu salin.')}catch(e){$('bmsg').textContent='Tekan lama teks di atas, lalu salin.'}};
+$('bim').onclick=()=>{try{const d=JSON.parse($('bk').value);let n=0;['prices','trx','market'].forEach(c=>{S[c]=S[c]||[];const ids=new Set(S[c].map(x=>String(x.id)));(d[c]||[]).forEach(x=>{if(x&&x.id!=null&&!ids.has(String(x.id))){S[c].push(x);n++}})});save();render();$('bmsg').textContent=n+' data diimpor.'}catch(e){$('bmsg').textContent='Format data tidak valid.'}};
+render();
+</script>
+</body>
+</html>
